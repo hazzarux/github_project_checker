@@ -29,11 +29,11 @@ def get_all_subdirs(directory): #adds full path to dir and then returns list of 
     return subdirs
     
 def get_subdirs(directory): #simply gets dirs :)
-    subdirs_without_path=os.walk(directory).next()[1]
-    return subdirs_without_path
-    
+    return [name for name in os.listdir(directory)
+            if os.path.isdir(os.path.join(directory, name))]
+
 def main():
-    os.system('clear')
+    #os.system('clear')
     home = get_home_path()
     #print "home path ready to be analyzed: "+home
     subdirs = get_all_subdirs(home)
